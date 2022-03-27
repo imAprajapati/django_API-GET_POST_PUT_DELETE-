@@ -24,7 +24,7 @@ def student(request):
         serializer=StudentSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response({'msg':'data create'})
+            return Response({'msg':'data created successfully !!'})
         return Response(serializer.errors)
 
     elif request.method=='PUT':
@@ -33,10 +33,10 @@ def student(request):
         serializer=StudentSerializer(stu,data=request.data,partial=True)
         if serializer.is_valid():
             serializer.save()
-            return Response({'msg':'data upadate'})
+            return Response({'msg':'data upadated successfully !!'})
         return Response(serializer.errors)
     elif request.method=='DELETE':
         id=request.data.get('id')
         stu=Student.objects.get(id=id)
         stu.delete()
-        return Response({'msg':'data delete successfull !!'})
+        return Response({'msg':'data deleted successfully !!'})
